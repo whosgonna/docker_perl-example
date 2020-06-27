@@ -8,9 +8,9 @@ RUN cpm install \
 
 FROM whosgonna/perl-runtime
 
-COPY cpanfile* ./
 COPY example.pl ./
 
-COPY --from=build /home/perl/local/ local
+COPY --from=build /home/perl/cpanfile* /home/perl/
+COPY --from=build /home/perl/local/    /home/perl/local
 
 cmd [ "carton", "exec", "./example.pl" ]
